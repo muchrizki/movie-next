@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { FaRegStar } from "react-icons/fa6"
 import { IoIosArrowBack } from "react-icons/io";
+import { AiFillCaretRight } from "react-icons/ai";
 
 export default async function Movie ({params}) {
     const { id } = params
@@ -39,22 +40,32 @@ export default async function Movie ({params}) {
 
         <div className="konten mt-2 px-4 py-1 w-[100%] bg-cyan-0 overflow-hidden">
 
-            <h3 className="title translate-x-45 font-sans font-semibold tracking-wider text-lg max-w-[200px] md:max-w-[600px] md:tracking-widest md:text-2xl md:mt-2">{movie.title}</h3>
+            <h3 className="title translate-x-45 font-sans font-semibold tracking-wider text-lg max-w-[150px] min-[375px]:max-w-[200px] md:max-w-[600px] md:tracking-widest md:text-2xl md:mt-2">{movie.title}</h3>
             
             <div className="rating flex gap-2 items-center translate-x-45 ">
                 <FaRegStar className="text-yellow-300"/>
                 <p className="text-rating text-lg md:text-2xl font-semibold">{movie.vote_average}</p> 
             </div>
             
-            <div className="genres pr-6 pl-2 mt-10 flex flex-wrap gap-2">
+            <p className="mt-10 px-2 italic tracking-widest">{movie.tagline}</p>
+
+            <div className="genres pr-6 pl-2 mt-4 flex flex-wrap gap-2">
                 {movie.genres.map(genre => (
                     <p key={genre.id} className="tracking-wider text-sm md:text-base bg-blue-500 px-4 py-2 rounded-xl text-white">{genre.name}</p>
                 ))}
             </div>
 
-            <p className="mt-4 pr-6 pl-2 tracking-wide font-sans max-w-[500px] md:max-w-[700px] lg:max-w-[1000px] md:pr-2 md:text-lg">{movie.overview}</p>
+            <p className="mt-4 pr-6 pl-2 tracking-wide max-w-[500px] md:max-w-[700px] lg:max-w-[1000px] md:pr-2 md:text-lg">{movie.overview}</p>
+
+            <Link href={movie.homepage} target="_blank">
+            <button className="mt-4 sm:mt-6 px-6 py-2 rounded-3xl bg-white text-black border-[0.7px] border-black flex justify-center gap-2 items-center cursor-pointer hover:text-white hover:border-[0.7px] hover:bg-black hover:border-white active:text-white active:border-[0.7px] active:bg-black active:border-white transition">
+                <p className="tracking-wide text-sm font-medium -translate-y-[1.5px]">See movies</p>
+                <AiFillCaretRight />
+            </button>
+            </Link>
         </div>
 
+        <p className="mt-6 px-4"></p>
         </>
     )
 }
