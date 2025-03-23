@@ -63,7 +63,7 @@ export default function TabsCarousel ({movies, handleTab, tabValue, handleTraile
                       <div className="card-item w-[230px] h-[290px] rounded-lg shaodow-4xl overflow-hidden cursor-pointer">
                           <img src={`${imageURL}/${movie.poster_path}`} alt="poster-1" />
 
-                          <button className="absolute bottom-3 left-2 sm:mt-6 px-3 py-1 rounded-3xl bg-white text-black flex justify-center gap-2 items-center cursor-pointer hover:text-white hover:border-[0.7px] hover:bg-black hover:border-white transition" onClick={() => handleTrailerId(movie.id)}>
+                          <button className="absolute bottom-3 left-2 sm:mt-6 px-3 py-1 rounded-3xl bg-white text-black flex justify-center gap-2 items-center cursor-pointer hover:text-white hover:border-[0.7px] hover:bg-black hover:border-white active:text-white active:border-[0.7px] active:bg-black active:border-white transition" onClick={() => handleTrailerId(movie.id)}>
                               <p className="tracking-widest text-xs font-medium translate-x-1 -translate-y-[0.7px]">Trailer</p>
                               <AiFillCaretRight />
                           </button>

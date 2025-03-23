@@ -25,10 +25,10 @@ export default async function Movie ({params}) {
     return (
         <>
         
-        <div className="backdrop bg-cyan-0 w-[100%] h-[40vh] relative">  
+        <div className="backdrop bg-cyan-0 w-[100%] h-[40vh] lg:h-[60vh] relative">  
 
             <Link href={'/'}>
-            <div className="back absolute top-2 left-2 md:top-5 md:left-5 bg-[#0575E6] text-white border-white border-1 rounded-full hover:text-white hover:border-[0.7px] hover:bg-black hover:border-white transition cursor-pointer">
+            <div className="back absolute top-2 left-2 md:top-5 md:left-5 bg-[#0575E6] text-white border-white border-1 rounded-full hover:text-white hover:border-[0.7px] hover:bg-black hover:border-white active:text-white active:border-[0.7px] active:bg-black active:border-white transition cursor-pointer">
                 <IoIosArrowBack className=" text-4xl -translate-x-[1px]  p-1"/>
             </div>
             </Link>
@@ -52,7 +52,7 @@ export default async function Movie ({params}) {
                 ))}
             </div>
 
-            <p className="mt-4 pr-6 pl-2 tracking-wide font-sans max-w-[500px] md:max-w-[700px] md:pr-2 md:text-lg">{movie.overview}</p>
+            <p className="mt-4 pr-6 pl-2 tracking-wide font-sans max-w-[500px] md:max-w-[700px] lg:max-w-[1000px] md:pr-2 md:text-lg">{movie.overview}</p>
         </div>
 
         </>
