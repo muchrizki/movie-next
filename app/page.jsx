@@ -79,7 +79,7 @@ export default function Home() {
 
         <Navbar logo={logo} menus={menus} activeNav={activeNav} handleActiveNav={handleActiveNav} 
         onSidebar={onSidebar} />
-        {sidebar && <Sidebar menus={menus} activeNav={activeNav} offSidebar={offSidebar} /> }
+        {sidebar && <Sidebar menus={menus} activeNav={activeNav} offSidebar={offSidebar} handleActiveNav={handleActiveNav} /> }
         
         {loadingTrendings ? <CarouselSkeleton /> : <CarouselComponent movies={movies_2025}/>  }
         

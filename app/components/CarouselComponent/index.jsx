@@ -4,6 +4,7 @@ import { Carousel } from "antd"
 import { AiFillCaretRight } from "react-icons/ai";
 import { FaRegStar } from "react-icons/fa6"
 import { FaEye } from "react-icons/fa";
+import Link from "next/link";
 
 import"./Carousel.css"
 
@@ -37,10 +38,14 @@ export default function CarouselComponent ({movies}) {
                             </div>
 
                             <p className="max-w-[300px] sm:max-w-[500px] mt-3 text-base sm:text-xl tracking-wider">{movie.overview}</p>
+                            
+                            <Link href={`/movie/${movie.id}`}>
                             <button className="mt-4 sm:mt-6 px-6 py-2 rounded-3xl bg-white text-black flex justify-center gap-2 items-center cursor-pointer hover:text-white hover:border-[0.7px] hover:bg-black hover:border-white transition">
                                 <p className="tracking-widest font-medium -translate-y-[1.5px]">Details</p>
                                 <AiFillCaretRight />
                             </button>
+                            </Link>
+
                         </div>
 
                         <img src={`${imageURL}/${movie.backdrop_path}`} alt={movie.title}
