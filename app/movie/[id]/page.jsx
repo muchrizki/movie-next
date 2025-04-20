@@ -1,12 +1,15 @@
-
 import Link from "next/link";
 import { FaRegStar } from "react-icons/fa6"
 import { IoIosArrowBack } from "react-icons/io";
 import { AiFillCaretRight } from "react-icons/ai";
 
+
 export default async function Movie ({params}) {
-    const { id } = params
-    
+    const { id } = await params
+
+    //image url 
+    const imageURL = "https://image.tmdb.org/t/p/original/"
+
     const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjkyOTVhNjNmNjQ0NzRjYjdkN2QzYzA5ZTE2NzI1MCIsIm5iZiI6MTc0MDA0ODI3OC45NzgsInN1YiI6IjY3YjcwNzk2ZWQwYmJjYzUwZjY1NmViZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nASrizC09jmZ3n3SH_p02BqjXyOu01NJJacbqX0-Trk"
     
     const config = {
@@ -15,13 +18,11 @@ export default async function Movie ({params}) {
         },
     } 
 
+    //fetching movie details
     const res = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=en-US`, config)
     const movie = await res.json()
+    console.log(movie) 
 
-    console.log(movie)
-
-    const imageURL = "https://image.tmdb.org/t/p/original/"
-    
 
     return (
         <>
@@ -65,7 +66,21 @@ export default async function Movie ({params}) {
             </Link>
         </div>
 
-        <p className="mt-6 px-4"></p>
+        <div className="videos-trailer-container mt-6 px-4 mb-10">
+            <div className="tabs border-b-[0.7px] flex gap-4 px-2 tracking-wider pb-1 font-serif">
+                <h3>Production Companies</h3>
+            </div>
+            <div className="videos-trailer px-2 mt-2 py-4 flex gap-6 flex-wrap">
+                {movie.production_companies.map(company => (
+                    <div key={company.name} className="one flex gap-2 bg-cyan-0 items-center">
+                        <img src={`${imageURL}/${company.logo_path}`} alt={company.name} className="w-[64px]"/>
+                        <h3 className="bg-none flex text-base tracking-wider font-medium">{company.name}</h3>
+                    </div>
+                ))}
+                
+            </div>
+        </div>
+
         </>
     )
 }

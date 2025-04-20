@@ -3,6 +3,7 @@ import { useState } from "react"
 
 export default function useTVSeries () {
     const [tvSeries, setTvSeries] = useState([])
+    const [error, setError] = useState(null)
 
     const fetchTVSeries = async () => {
 
@@ -19,9 +20,10 @@ export default function useTVSeries () {
             // console.log(response)
             setTvSeries(response.data.results)
         } catch (error) {
-            console.log(error)
+            setError(error)
+            // console.log(error)
         }
     }
 
-    return { fetchTVSeries, tvSeries }
+    return { fetchTVSeries, tvSeries, error }
 }

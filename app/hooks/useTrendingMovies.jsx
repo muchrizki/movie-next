@@ -4,6 +4,7 @@ import { useState } from "react"
 export default function useTrendingMovies () {
     const [moviesTrendings, setMoviesTrendings] = useState([])
     const [loadingTrendings, setLoadingTrendings] = useState(false)
+    const [error, setError] = useState(null)
 
     const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMjkyOTVhNjNmNjQ0NzRjYjdkN2QzYzA5ZTE2NzI1MCIsIm5iZiI6MTc0MDA0ODI3OC45NzgsInN1YiI6IjY3YjcwNzk2ZWQwYmJjYzUwZjY1NmViZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nASrizC09jmZ3n3SH_p02BqjXyOu01NJJacbqX0-Trk"
     
@@ -23,7 +24,8 @@ export default function useTrendingMovies () {
             setMoviesTrendings(response.data.results)
             // console.log(moviesCarousel)
         } catch (error) {
-            console.log(error)
+            setError(error)
+            // console.log(error)
         } finally {
             setLoadingTrendings(false)
         }
@@ -32,5 +34,5 @@ export default function useTrendingMovies () {
     }
 
 
-    return { moviesTrendings, loadingTrendings, fetchTrendingMovies }
+    return { moviesTrendings, loadingTrendings, error, fetchTrendingMovies }
 }
